@@ -175,3 +175,72 @@ body{
 	border-color: gray;
 	
 }
+
+
+
+
+
+.hubname { 
+	float: left; 
+	margin: 1% ; 
+	background: #EEEEEE; 
+	width: 45%; 
+	border:1px solid #AAAAAA; 
+
+}
+
+.admin { 
+	float: left; 
+	margin: 1% ; 
+	background: #EEEEEE; 
+	width: 45%; 
+	border:1px solid #AAAAAA; 
+}
+
+.logbt {float: right;}
+
+.mainT{
+	text-align: center;
+}
+
+#boxpp {
+	float:right;
+    margin:0 auto;
+    background:#EEEEEE;
+    width:50%;
+    border:1px solid #AAAAAA; }
+    
+#login {
+	float:left;
+    margin:0 auto;
+    background:#EEEEEE;
+    width:45%;
+    border:1px solid #AAAAAA; }    
+    
+#createcmp {
+	float:right;
+    margin:0 auto;
+    background:#EEEEEE;
+    width:45%;
+    border:1px solid #AAAAAA; }      
+    
+#menu { margin-left:2%}
+
+
+#chatbox {
+    text-align:left;
+    margin:auto;
+    margin-bottom:2%;
+    padding:1px;
+    background:#fff;
+    height:400px;
+    width:90%;
+    border:1px solid #AAAAAA;
+    overflow:auto; }
+    
+#usermsg {
+	margin:10px;
+    width:80%;
+    border:1px solid #AAAAAA; }
+  
+#submitmsg { width: 12%; }

@@ -51,10 +51,11 @@ function connect(username, password){
 }
 
 function connectSuccess(rep){
-		var tmp = JSON.parse(rep)
-		env.key = tmp.key
-		env.username = tmp.login
-		env.id = tmp.id
+	var tmp = JSON.parse(rep)
+	env.key = tmp.key
+	env.username = tmp.login
+	env.id = tmp.id
+	setCookie('key', tmp.key, 1000)
 	makeMainPanel(env.id, env.username, undefined)
 }
 

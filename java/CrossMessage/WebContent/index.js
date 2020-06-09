@@ -107,7 +107,72 @@ function makeMainPanel(fromId, fromUsername, query){
 	env.fromUsername = fromUsername
 	env.query = query
 
-	var s = "<header id='top'><span class='logo' onclick='javascript:makeMainPanel()'>Twister</span>"
+	var s = `
+<input class="logbt"
+type="button"
+	value="Logout">
+
+<h1 class="mainT">CrossMessage</h1>
+
+<h2>Hub Selection</h2>
+
+<div class=hubname>
+	<h1>Hub Name</h1>
+	<div id="menu">
+		<p>room: général</p>
+	</div>
+</div>
+
+
+<div id="boxpp">
+	<h1> Chat</h1>
+	<div id="menu">
+		<p>ID: Foo</p>
+    </div>
+     
+    <div id="chatbox">
+		<!-- <p><i>$Name</i> $Texte</p>-->
+		<p><i>Pog: </i>Chomp</p>
+		<p><i>Hey: </i>Pelo</p>
+		<p><i>Moi: </i>Pk l'html?</p>
+		<p><i>Oui bjr?: </i>Les conventions de Genève sont des traités internationaux fondamentaux dans le domaine du droit international humanitaire. 
+		Elles dictent les règles de conduite à adopter en période de conflits armés, et notamment la protection des civils, des membres de l'aide humanitaire, 
+		des blessés ou encore, des prisonniers de guerre.
+		La première convention de Genève date de 1864. Cependant, les textes en vigueur aujourd’hui ont été écrits après la Seconde Guerre mondiale. 
+		Sept textes ont cours actuellement : les quatre conventions de Genève du 12 août 1949, les deux protocoles additionnels du 8 juin 1977 et le 
+		troisième protocole additionnel de 2005. Les quatre conventions de Genève ont été mondialement ratifiées, 
+		ce qui signifie que chacun des États du monde s’engage à les respecter.</p>
+		<p><i>Pog: </i>Chomp.</p>
+		<p><i>Hey: </i>Pelo?</p>		
+		<p><i>Pog: </i>Chomp.</p>
+		<p><i>Hey: </i>Pelo?</p>		
+		<p><i>Pog: </i>Chomp.</p>
+		<p><i>Hey: </i>Pelo?</p>		
+    </div>
+     
+    <form name="message" action="">
+        <input name="usermsg" type="text" id="usermsg"/>
+        <input name="submitmsg" type="submit"  id="submitmsg" value="Send" />
+    </form>
+</div>
+
+<!-- Div admin -->
+<div class=admin>
+	<h1>Admin</h1>
+		<div id="menu">
+		<input name="submitmsg" type="submit"  id="submitmsg" value="truc important" />	</div>
+		<p></p>
+</div>
+<!-- Div admin -->
+
+  
+	`;
+
+	
+
+
+
+	/*
 		
 	if(env.id == undefined) { // user not connected
 		s+="<div class='header_action'><button id='login' onclick='makeConnectionPanel()'>Login</button</div></header>"
@@ -152,12 +217,11 @@ function makeMainPanel(fromId, fromUsername, query){
 	}
 	
 	s += "<div id='messages'></div> </div>"
+
+	*/
 	$("body").html(s)
 	$("head link").replaceWith("<link rel='stylesheet' type='text/css' href='pageprincipale.css'>")
 	
 	//attention à la différence entre afficher les messages des amis de fromId  et afficher le profile de fromId, pour les deux fromId==env.id
 	//ce que j'ai fait en dessous est peut etre faux
-	if(env.fromId < 0)  completeMessage(undefined,undefined) //general feed
-	else if(env.fromId != env.id && fromUsername==undefined) completeMessage(undefined,env.id) //friends feed
-	else completeMessage(env.fromId, undefined) //profile page
 }

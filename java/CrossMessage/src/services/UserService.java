@@ -56,6 +56,22 @@ public class UserService {
 		c.close();
 		return ret;
 	}
+
+	public static JSONObject loginByKey(String key) throws JSONException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+		JSONObject ret = new JSONObject();
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Connection c= ConnectionTools.getMySQLConnection();
+		if(key==null){
+			ret=ServiceRefused.serviceRefused("blank field", 2);
+		}
+		
+//		else{
+//			String key =UserTools.insererConnexion(c, login, UserTools.userIsRoot(c, login));
+//			ret.put("status", "ok").put("id",Database.getUserId(c,key)).put("key",key).put("login", login);
+//		}
+		c.close();
+		return ret;
+	}
 	
 	public static JSONObject logout(String key) throws JSONException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
 		JSONObject ret= new JSONObject();

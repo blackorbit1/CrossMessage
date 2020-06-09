@@ -9,6 +9,11 @@
     <servlet-name>login</servlet-name>
     <servlet-class>servlets.user.Login</servlet-class>
   </servlet>
+
+  <servlet>
+    <servlet-name>loginbykey</servlet-name>
+    <servlet-class>servlets.user.LoginByKey</servlet-class>
+  </servlet>
   
   <servlet>
     <servlet-name>logout</servlet-name>
@@ -49,6 +54,12 @@
 	<servlet-name>listMessage</servlet-name>
 	<servlet-class>servlets.message.ListMessage</servlet-class>
   </servlet>
+
+  <servlet>
+	<servlet-name>ConnectDiscordBot</servlet-name>
+	<servlet-class>servlets.discord.ConnectDiscordBot</servlet-class>
+  <load-on-startup>1</load-on-startup>
+  </servlet>
   
   
   
@@ -61,6 +72,11 @@
   <servlet-mapping>
     <servlet-name>login</servlet-name>
     <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>loginbykey</servlet-name>
+    <url-pattern>/LoginByKey</url-pattern>
   </servlet-mapping>
   
     <servlet-mapping>
