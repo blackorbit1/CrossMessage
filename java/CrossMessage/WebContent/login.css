@@ -1,0 +1,66 @@
+html{
+	height: 100%;
+	background-image: url("https://picsum.photos/1920/1080/?random");
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	box-sizing: border-box;
+}
+
+body{
+	/* height: 100%; */
+}
+
+header{
+	/* height: 30px; */
+}
+header h1{
+	color: white;
+	text-align: center;
+	text-shadow: 1px 1px 1px black;
+}
+
+#connexion_main form{
+	width: auto;
+	height: auto;
+	text-align: center;
+	padding-top: 200px;
+}
+
+#connexion_main .ids{
+	height: 24px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	position: relative;
+}
+
+#connexion_main .ids input{
+	height: 20px;
+	display: inline-block;
+	width: 160px;
+}
+
+/*#connexion_main .ids span{
+	display: inline-block;
+	width: 70px;
+}*/
+
+#connexion_main .buttons{
+	height: 20px;
+}
+
+#connexion_main .buttons input{
+	background-color: lightblue;
+	height: 100%;
+	margin-left: 80px;
+}
+
+#connexion_main .links{
+	/*text-shadow: 1px 1px 1px white;*/
+	font-size: 12px;
+}
+
+#connexion_main .links #link1{
+	margin-left: 80px;
+	color: blue;
+}
