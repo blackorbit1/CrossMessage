@@ -99,8 +99,21 @@ function revival1(key,value)
 	return value;
 }
 
-function getHubs(){
+function getHubRooms(hub_id){
+	$.ajax({
+		type:"GET",
+		url:"GetHubRooms",
+		data:"hub_id=" + hub_id,
+		datatype:"json",
+		success:function(rep){ displayHubRooms(hub_id, JSON.parse(rep)["rooms"]); },
+		error:function(jqXHR,textStatus,errorThrown){ makeConnectionPanel(); }
+	  })
+}
 
+function displayHubRooms(hub_id, rooms){
+	var hub = document.getElementById(hub_id);
+	//hub.insertAdjacentHTML('beforeend', "<div class='message'><span class='pseudo'>)
+	hub.insertAdjacentHTML('beforeend', "<div class='message'><span class='pseudo'>") ///// TODO aaaaaaaaaaaaaaaaaaaaaaaaaaaaa todo
 }
 
 function create_hub(formulaire){

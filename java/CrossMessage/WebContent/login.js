@@ -1,6 +1,5 @@
 function try_connect(){
 	var cookey = getCookie('key');
-	console.log("cookey" + cookey)
 	if(cookey==null || cookey ==''){
 		makeConnectionPanel();
 	}
@@ -84,7 +83,6 @@ function connect(username, password){
 
 function connectSuccess(rep){
 	var tmp = JSON.parse(rep)
-	console.log("connect succes response " + rep)
 	env.key = tmp.key
 	env.username = tmp.login
 	env.id = tmp.id
