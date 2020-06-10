@@ -17,8 +17,7 @@ public class UserTools {
 		String query= "select * from user where login=\""+user+"\";";
 		Statement st = c.createStatement();
 		ResultSet rs= st.executeQuery(query);
-		if(rs.next()) ret= true;
-		else ret=false;
+		ret = rs.next();
 		rs.close();
 		st.close();
 		return ret;
@@ -29,8 +28,8 @@ public class UserTools {
 		String query= "select * from user where userID=\""+userID+"\";";
 		Statement st = c.createStatement();
 		ResultSet rs= st.executeQuery(query);
-		if(rs.next()) ret= true;
-		else ret=false;
+		ret = rs.next();
+
 		rs.close();
 		st.close();
 		return ret;
@@ -51,8 +50,7 @@ public class UserTools {
 		String query=  "select * from user where login=\""+user+"\" AND password=PASSWORD(\""+pwd+"\");";
 		Statement st = c.createStatement();
 		ResultSet rs= st.executeQuery(query);
-		if(!rs.next()) ret=false;
-		else ret=true;
+		ret = rs.next();
 		rs.close();
 		st.close();
 		return ret;
@@ -75,16 +73,14 @@ public class UserTools {
 	}
 	
 	public static boolean userIsRoot(Connection c, String login) throws SQLException, ClassNotFoundException{
-		boolean ret;
 		String query= "select isRoot from user where login=\""+login+"\";";
 		Statement st = c.createStatement();
 		ResultSet rs= st.executeQuery(query);
 		if(!rs.next()) throw new SQLException("utilisateur etrangement inexistant");
 		int root = rs.getByte("isRoot");
-		ret = (root==0)?false:true;
 		rs.close();
 		st.close();
-		return ret;
+		return (root==0);
 	}
 	
 	public static boolean keyIsRoot(Connection c, String key) throws SQLException, ClassNotFoundException{
@@ -94,7 +90,7 @@ public class UserTools {
 		ResultSet rs= st.executeQuery(query);
 		if(!rs.next()) throw new SQLException("utilisateur etrangement inexistant");
 		int root = rs.getByte("isRoot");
-		ret = (root==0)?false:true;
+		ret = (root==0);
 		rs.close();
 		st.close();
 		return ret;
@@ -105,8 +101,8 @@ public class UserTools {
 		String query= "select * from session where cle=\""+key+"\";";
 		Statement st = c.createStatement();
 		ResultSet rs= st.executeQuery(query);
-		if(rs.next()) ret= true;
-		else ret=false;
+		ret = rs.next();
+
 		rs.close();
 		st.close();
 		return ret;
@@ -120,4 +116,6 @@ public class UserTools {
 		st.executeUpdate(query);
 		st.close();
 	}
+
+	
 }

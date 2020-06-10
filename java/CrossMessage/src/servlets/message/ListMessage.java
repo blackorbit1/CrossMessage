@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,8 @@ import services.MessageService;
 
 //import com.mongodb.BasicDBObject;
 
+
+@WebServlet( name="ListMessage", urlPatterns = "/ListMessage")
 public class ListMessage extends HttpServlet{
 //	protected void doGet(HttpServletRequest req, HttpServletResponse rep ) throws IOException{
 //		Map<String,String[]> pars = req.getParameterMap();

@@ -38,19 +38,19 @@ public class UserService {
 	public static JSONObject login(String login, String pwd) throws JSONException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
 		JSONObject ret = new JSONObject();
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		Connection c= ConnectionTools.getMySQLConnection();
-		if(login==null || pwd==null){
-			ret=ServiceRefused.serviceRefused("blank field", 2);
+		Connection c = ConnectionTools.getMySQLConnection();
+		if(login == null || pwd == null){
+			ret = ServiceRefused.serviceRefused("blank field", 2);
 		}
 		
 		else if(!UserTools.userExists(c, login)){
-			ret=ServiceRefused.serviceRefused("user does not exist", 3);
+			ret = ServiceRefused.serviceRefused("user does not exist", 3);
 		}
 		else if(!UserTools.checkPassword(c, login, pwd)){
-			ret=ServiceRefused.serviceRefused("incorrect password", 4);
+			ret = ServiceRefused.serviceRefused("incorrect password", 4);
 		}
 		else{
-			String key =UserTools.insererConnexion(c, login, UserTools.userIsRoot(c, login));
+			String key = UserTools.insererConnexion(c, login, UserTools.userIsRoot(c, login));
 			ret.put("status", "ok").put("id",Database.getUserId(c,key)).put("key",key).put("login", login);
 		}
 		c.close();
@@ -60,25 +60,26 @@ public class UserService {
 	public static JSONObject loginByKey(String key) throws JSONException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
 		JSONObject ret = new JSONObject();
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		Connection c= ConnectionTools.getMySQLConnection();
+		Connection c = ConnectionTools.getMySQLConnection();
 		if(key==null){
-			ret=ServiceRefused.serviceRefused("blank field", 2);
+			ret = ServiceRefused.serviceRefused("blank field", 2);
 		}
-		
-//		else{
-//			String key =UserTools.insererConnexion(c, login, UserTools.userIsRoot(c, login));
-//			ret.put("status", "ok").put("id",Database.getUserId(c,key)).put("key",key).put("login", login);
-//		}
+		if(UserTools.connectionExists(c,key)){
+			ret.put("status", "ok").put("id",Database.getUserId(c,key)).put("key",key).put("userID",Database.getUserId(key));
+		}
+		else{
+			ret = ServiceRefused.serviceRefused("unknown connexion key",5);
+		}
 		c.close();
 		return ret;
 	}
 	
 	public static JSONObject logout(String key) throws JSONException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-		JSONObject ret= new JSONObject();
+		JSONObject ret = new JSONObject();
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		Connection c= ConnectionTools.getMySQLConnection();
+		Connection c = ConnectionTools.getMySQLConnection();
 		if (key==null) {
-			ret=ServiceRefused.serviceRefused("blank field", 2);
+			ret = ServiceRefused.serviceRefused("blank field", 2);
 		}
 		else if (UserTools.connectionExists(c, key)) {
 			UserTools.rmConnection(c, key);
@@ -86,7 +87,7 @@ public class UserService {
 			ret.put("effect", "disconnected");
 			
 		} else {
-			ret=ServiceRefused.serviceRefused("unknown connexion key",5);
+			ret = ServiceRefused.serviceRefused("unknown connexion key",5);
 		}
 		c.close();
 		return ret;

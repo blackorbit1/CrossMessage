@@ -1,6 +1,9 @@
-body{
+
+body {
 	margin: unset;
-	background: whitesmoke;
+    background-color: #80808026;
+    font-family: sans-serif, "roboto";
+    padding: 30px;
 }
 
 #top{
@@ -180,22 +183,53 @@ body{
 
 
 
+
+
+#chatbox {
+    text-align:left;
+    margin:auto;
+    margin-bottom:2%;
+    padding:1px;
+    background:#fff;
+    height:400px;
+    width:90%;
+    border:1px solid #AAAAAA;
+    overflow:auto;
+    box-shadow: inset 0px 1px 5px #00000030;
+    border-radius: 5px;
+    border: 1px #00000038 solid;
+    padding: 10px;
+}
+
 .hubname { 
 	float: left; 
-	margin: 1% ; 
-	background: #EEEEEE; 
-	width: 45%; 
-	border:1px solid #AAAAAA; 
+	margin: 0 ; 
+	width: 40%; 
 
 }
 
 .admin { 
 	float: left; 
-	margin: 1% ; 
-	background: #EEEEEE; 
-	width: 45%; 
-	border:1px solid #AAAAAA; 
+	margin: 0 ; 
+	width: 40%; 
 }
+
+#boxpp {
+    float:right;
+    margin:0 auto;
+    width:50%;
+}
+
+.hubname, .admin, #boxpp {
+    border-radius: 5px;
+    border: 0px;
+    padding: 10px;
+    box-shadow: 0px 10px 20px -3px #00000057;
+    background-color: white;
+    margin-top: 50px;
+}
+
+
 
 .logbt {float: right;}
 
@@ -203,13 +237,6 @@ body{
 	text-align: center;
 }
 
-#boxpp {
-	float:right;
-    margin:0 auto;
-    background:#EEEEEE;
-    width:50%;
-    border:1px solid #AAAAAA; }
-    
 #login {
 	float:left;
     margin:0 auto;
@@ -227,16 +254,7 @@ body{
 #menu { margin-left:2%}
 
 
-#chatbox {
-    text-align:left;
-    margin:auto;
-    margin-bottom:2%;
-    padding:1px;
-    background:#fff;
-    height:400px;
-    width:90%;
-    border:1px solid #AAAAAA;
-    overflow:auto; }
+
     
 #usermsg {
 	margin:10px;

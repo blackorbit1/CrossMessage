@@ -22,7 +22,7 @@ import bd.Database;
 public class MessageTools {
 		
 	
-	public static void addMessage(String key, String content) throws UnknownHostException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException{
+	public static void addMessage(Connection c, String user, String message, String hub_id) throws UnknownHostException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException{
 //		//recuperation du user_id a partir de la key
 //		int userID = Database.getUserId(key);
 //		//recuperation des messages
@@ -35,8 +35,10 @@ public class MessageTools {
 //		dbo.put("comments", null);
 //		message.insert(dbo);
 //		System.out.println(dbo.toString());
-	
-		
+		String query= "insert into message(id_hub, message_content, user) values (\""+hub_id+"\",\""+message+"\" , \""+user+"\");";
+		Statement st = c.createStatement();
+		st.executeUpdate(query);
+		st.close();
 	}
 	
 	

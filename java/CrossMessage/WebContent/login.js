@@ -1,3 +1,35 @@
+function try_connect(){
+	var cookey = getCookie('key');
+	console.log("cookey" + cookey)
+	if(cookey==null || cookey ==''){
+		makeConnectionPanel();
+	}
+	else{
+		env.key = cookey;
+		$.ajax({
+			type:"POST",
+			url:"LoginByKey",
+			data:"key="+env.key,
+			datatype:"json",
+			success:function(rep){handleLoginKeyResp(rep);},
+			error:function(jqXHR,textStatus,errorThrown){ makeConnectionPanel(); }
+		  })
+	}
+}
+
+function handleLoginKeyResp(rep){
+	var tmp = JSON.parse(rep)
+	if(tmp.status == "KO"){
+		makeConnectionPanel();
+	}
+	else{
+		env.username = tmp.login
+		env.key = tmp.key
+		makeMainPanel(env.id, env.username, undefined)
+	}
+	
+}
+
 function connection(formulaire){
 	noConnection = false;
 	var username = formulaire.username.value;
@@ -52,6 +84,7 @@ function connect(username, password){
 
 function connectSuccess(rep){
 	var tmp = JSON.parse(rep)
+	console.log("connect succes response " + rep)
 	env.key = tmp.key
 	env.username = tmp.login
 	env.id = tmp.id
@@ -80,6 +113,7 @@ function makeConnectionPanel(){
 }
 
 function logout(){
+	eraseCookie('key');
 	$.ajax({
 	      type:"POST",
 	      url:"Logout",

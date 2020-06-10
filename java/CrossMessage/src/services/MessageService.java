@@ -12,15 +12,20 @@ import org.json.JSONObject;
 //import com.mongodb.BasicDBObject;
 
 import bd.ConnectionTools;
+import bd.Database;
 import servicesTools.MessageTools;
 import servicesTools.ServiceRefused;
 import servicesTools.UserTools;
 
 public class MessageService {
 
-	public static JSONObject addMessage(String key, String message) throws JSONException, UnknownHostException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+	public static JSONObject addMessage(String key, String message, String hub_id) throws JSONException, UnknownHostException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
 		JSONObject ret = new JSONObject();
-		MessageTools.addMessage(key, message);
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Connection c = ConnectionTools.getMySQLConnection();
+		String user = Database.getPseudoFromKey(key);
+		MessageTools.addMessage(c, user, message, hub_id);
+		c.close();
 		ret.put("status", "OK");
 		ret.put("effect", "posted !");
 		return ret;

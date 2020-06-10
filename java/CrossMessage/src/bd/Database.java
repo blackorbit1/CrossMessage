@@ -52,6 +52,37 @@ public class Database {
 		c.close();
 		return userID;
 	}
+
+	public static String getPseudoFromKey(String key) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Connection c= ConnectionTools.getMySQLConnection();
+		String pseudo = "unknown";
+
+		String query_id = "select userID from session where cle=\""+key+"\"";
+
+
+		Statement st_id = c.createStatement();
+		ResultSet rs_id = st_id.executeQuery(query_id);
+
+		if(rs_id.next()){
+			String userID = rs_id.getString("id");
+			String queryPseudo= "select nom from user where userID=\""+userID+"\";";
+
+			Statement st_pseudo = c.createStatement();
+			ResultSet rs_pseudo = st_pseudo.executeQuery(queryPseudo);
+
+			if(rs_pseudo.next()) pseudo = rs_pseudo.getString("nom");
+			
+			rs_pseudo.close();
+			st_pseudo.close();
+		} 
+		rs_id.close();
+		st_id.close();	
+
+
+		c.close();
+		return pseudo;
+	}
 	
 	
 	public static int getUserId(Connection c,String key) throws ClassNotFoundException, SQLException{

@@ -9,11 +9,7 @@
 
 <input class="logbt"
 	type="button"
-       value="Sign Up">
-
-<input class="logbt"
-	   type="button"
-       value="Sign In">
+       value="Logout">
 
 <h1 class="mainT">CrossMessage</h1>
 
@@ -62,9 +58,32 @@
 <!-- Div admin -->
 <div class=admin>
 	<h1>Admin</h1>
-		<div id="menu">
-		<input name="submitmsg" type="submit"  id="submitmsg" value="truc important" />	</div>
+		<form name="message" action="">
+			<label for="param">Nom du Hub :</label>
+			<input name="usermsg" type="text" id="param"/>
+			<input name="submitmsg" type="submit"  id="submitmsg" value="Crée Hub" />
+		</form>
 		<p></p>
+		
+		<form name="message" action="">
+			<label for="param">Nom du Hub :</label>
+			<input name="usermsg" type="text" id="param"/>
+			<label for="paramRoom">Nom de la room :</label>
+			<input name="usermsg" type="text" id="paramRoom"/>
+			<input name="submitmsg" type="submit"  id="submitmsg" value="Ajouter room" />
+		</form>
+		<p></p>
+	
+		
+		<form name="message" action="">
+			<label for="param">Nom du Hub :</label>
+			<input name="usermsg" type="text" id="param"/>
+			<label for="paramRoom">Nom de la room :</label>
+			<input name="usermsg" type="text" id="paramRoom"/>
+			<input name="submitmsg" type="submit"  id="submitmsg" value="Retirer la room" />
+		</form>
+		<p></p>
+		
 </div>
 <!-- Div admin -->
 
