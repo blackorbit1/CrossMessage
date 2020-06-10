@@ -31,17 +31,4 @@ public class MessageService {
 		return ret;
 	}
 	
-//	public static JSONObject deleteMessage(String key, String idMessage) throws JSONException, ClassNotFoundException, SQLException, UnknownHostException, InstantiationException, IllegalAccessException{
-//		Class.forName("com.mysql.jdbc.Driver").newInstance();
-//		Connection c = ConnectionTools.getMySQLConnection();
-//		if(MessageTools.messageBelongsToUser(key, idMessage) || UserTools.keyIsRoot(c, key)){
-//			JSONObject ret = new JSONObject();
-//			MessageTools.deleteMessage(idMessage);
-//			ret.put("status", "OK");
-//			ret.put("effect", "message deleted");
-//			return ret;
-//		}else
-//			return ServiceRefused.serviceRefused("message does not belong to user", 7);
-//	}
-	
 }

@@ -4,13 +4,12 @@ function register(formulaire){
 	var username = formulaire.username.value;
 	var password = formulaire.password.value;
 	var password2 = formulaire.confirm.value;
-	var mail = formulaire.mail.value;
-	if(checkparams(fname, name, username, mail, password, password2)){
+	if(checkparams(fname, name, username, password, password2)){
 		//createUser(fname, name, username, mail, password); // for offline purpose only
 		$.ajax({
 			type:"POST",
 			url:"CreateUser",
-			data:"name="+name+"&fname="+fname+"&mail="+mail+"&login="+username+"&pwd="+password,
+			data:"name="+name+"&fname="+fname+"&login="+username+"&pwd="+password,
 			datatype:"json",
 			success:function(rep){ registerResponse(rep); },
 			error:function(jqXHR,textStatus,errorThrown){ func_erreur(textStatus); }
@@ -19,8 +18,14 @@ function register(formulaire){
 }
 
 function registerResponse(rep){
-	alert("User created. You can now log in")
-	makeConnectionPanel()
+	var tmp = JSON.parse(rep)
+	if(tmp.status == "KO"){
+		alert("There was a problem in User Creation");
+
+	}
+	else {
+		makeConnectionPanel()
+	}
 }
 
 function checkparams(fname, name, username, mail, password, password2){
@@ -78,8 +83,6 @@ function makeRegisterPanel(){
 	s+=		"<div class='ids'> <span>Last Name</span> <input type='text' name='name' placeholder='Doe'>"
 	s+=		"</div>"
 	s+=		"<div class='ids'> <span>Username</span> <input type='text' name='username' placeholder='djoe'>"
-	s+=		"</div>"
-	s+=		"<div class='ids'> <span>Mail Address</span> <input type='text' name='mail' placeholder='john.doe@mail.com'>"
 	s+=		"</div>"
 	s+=		"<div class='ids'> <span>Password</span><input type='password' name='password' placeholder='Password'>"
 	s+=		"</div>"

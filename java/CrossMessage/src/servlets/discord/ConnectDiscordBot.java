@@ -28,23 +28,25 @@ public class ConnectDiscordBot {
 			try {
 				jda = builder.build();
 				jda.addEventListener(new Listener());
+				System.out.println("Bot OK");
 			} catch (LoginException e) {
 				System.out.println("------> Erreur, le bot l'a pas pu etre chargé !");
 				e.printStackTrace();
 			}
 
-			System.out.println("Bot OK");
+			
 
 
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				this.co = ConnectionTools.getMySQLConnection();
+				System.out.println("BDD OK");
 			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+				System.out.println("------> Erreur, la base de données n'a pas pu etre chargé !");
 				e.printStackTrace();
 			}
 
-			System.out.println("BDD OK");
+			
 		}
 
 		public static JDA getJDA(){

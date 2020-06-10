@@ -28,7 +28,7 @@ public class GetHubRooms {
 		// utiliser getHubRooms()
 		
 		try {
-			ret = services.RoomService.createRoom(roomName, hubName, idDiscordRoom);
+			ret = services.HubService.getHubRooms(roomName, hubName, idDiscordRoom);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (InstantiationException e) {

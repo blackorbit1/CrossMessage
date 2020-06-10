@@ -6,9 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Collection;
 
-//import com.mongodb.DB;
-//import com.mongodb.DBCollection;
-//import com.mongodb.Mongo;
+
 
 public class ConnectionTools {
 
@@ -24,10 +22,4 @@ public class ConnectionTools {
 		}
 	}
 	
-//	public static DBCollection getMongoCollection(String nom_collection) throws UnknownHostException{
-//		Mongo m = new Mongo(DBStatic.mongo_url);
-//		DB db = m.getDB(DBStatic.mongo_db);
-//		DBCollection message = db.getCollection(nom_collection);
-//		return message;
-//	}
 }

@@ -113,7 +113,9 @@ function getHubRooms(hub_id){
 function displayHubRooms(hub_id, rooms){
 	var hub = document.getElementById(hub_id);
 	//hub.insertAdjacentHTML('beforeend', "<div class='message'><span class='pseudo'>)
-	hub.insertAdjacentHTML('beforeend', "<div class='message'><span class='pseudo'>") ///// TODO aaaaaaaaaaaaaaaaaaaaaaaaaaaaa todo
+	hub.insertAdjacentHTML('beforeend', "<span class='room'>"++"</span><div class='supp' onclick='javascript:remove_room_id("++")>X</div>) ///// TODO aaaaaaaaaaaaaaaaaaaaaaaaaaaaa todo
+
+
 }
 
 function create_hub(formulaire){
@@ -265,61 +267,8 @@ function makeMainPanel(fromId, fromUsername, query){
 	
 	</body>
 	</html>
-	
-  
 	`;
 
-	
-
-
-
-	/*
-		
-	if(env.id == undefined) { // user not connected
-		s+="<div class='header_action'><button id='login' onclick='makeConnectionPanel()'>Login</button</div></header>"
-			
-	} else{ //connected
-		s+="<div class='header_action'><button id='profile' onclick='javascript:pageUser(" + env.id +",\""+ env.username + "\")'>Profile</button>"
-		s+="<button id='logout' onclick='javascript:logout()'>Logout</button></div></header>"
-	}
-	
-	s+= "<div id='left'>"
-		
-	if( env.fromId < 0 ) {
-		// home page
-		s += "<div id='title'>News Feed</div>"
-			
-	} else {
-		// someone's page
-		s += "<div id='title'>" + fromUsername + "</div>"
-		s += "<div class='follow'>"
-			
-		if(env.id != fromId){
-			
-			if (isFollowed(env.id, fromId)) {
-				s+= "<button onclick='javascript:unfollow("+env.id+","+fromId +")'>Unfollow</button>"
-				
-			} else {
-				s+= "<button onclick='javascript:follow(" +env.id+","+fromId +")'>Follow</button>"
-			}
-		}
-		s += "</div>"
-	}
-
-	s += "</div> <div id='main'>"
-	if( fromId < 0 || fromId == env.id){
-		s += "<div id='new_message'>"
-		s +=	"<form action='javascript:(function(){return})()' method='get' onsubmit='javascript:newMessage(this)'>"
-		s += 		"<div class='textarea'>"
-		s += 			"<textarea name='text' placeholder='Write what comes to mind...'></textarea>"
-		s += 		"</div>"
-		s += 		"<div class='buttons'> <input type='submit' value='Post it!'>"
-		s += 	"</form> </div></div>"
-	}
-	
-	s += "<div id='messages'></div> </div>"
-
-	*/
 	$("body").html(s)
 	$("head link").replaceWith("<link rel='stylesheet' type='text/css' href='pageprincipale.css'>")
 	
